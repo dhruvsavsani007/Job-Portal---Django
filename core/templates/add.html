@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block start %}
+  <div class="container add-job-container">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="add-job-form">
+          <h2 class="text-center">Add Job</h2>
+          <form method="POST" action="{% url 'jobs' %}">
+            {% csrf_token %}
+            <div class="form-group">
+              <label for="title">Job Title</label>
+              <input type="text" class="form-control" id="title" name="title" placeholder="Enter job title" required />
+            </div>
+            <div class="form-group">
+              <label for="skills">Skills Required</label>
+              <input type="text" class="form-control" id="skills" name="skill" placeholder="Enter required skills" required />
+            </div>
+            <div class="form-group">
+              <label for="duration">Job Duration</label>
+              <input type="text" class="form-control" id="duration" name="duration" placeholder="Enter job duration" required />
+            </div>
+            <div class="form-group">
+              <label for="salary">Salary</label>
+              <input type="text" class="form-control" id="salary" name="salary" placeholder="Enter salary" required />
+            </div>
+            <div class="form-group">
+              <label for="deadline">Application Deadline</label>
+              <input type="date" class="form-control" id="deadline" name="deadline" required />
+            </div>
+            <div class="form-group">
+              <label for="positionsAvailable">Positions Available</label>
+              <input type="number" class="form-control" id="positionsAvailable" name="vacancy" required />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Add Job</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS and dependencies -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+{% endblock %}

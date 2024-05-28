@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+    <style>
+      body {
+        background-color: rgb(255, 255, 255);
+        color: #000;
+      }
+      
+      .container {
+        max-width: 600px;
+        margin-top: 50px;
+      }
+      
+      h1 {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .profile-icon img {
+        width: 200px;
+        height: 200px;
+        border: none;
+        border-radius: 50%;
+      }
+      .profile-icon {
+        font-size: 100px;
+        color: rgb(33, 33, 198);
+        margin-bottom: 20px;
+      }
+      
+      .profile-info {
+        margin-bottom: 20px;
+      }
+      
+      .profile-info h3 {
+        margin-bottom: 10px;
+      }
+      .custom-navbar {
+        background-color: rgb(33, 33, 198); /* Blue color */
+      }
+      
+      .custom-navbar .navbar-brand,
+      .custom-navbar .navbar-nav .nav-link {
+        color: #ffffff; /* White text */
+      }
+      
+      .eye-icon {
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+    <div class="container">
+      <h1>{{ user.name }}'s Profile</h1>
+      <div class="profile-icon text-center">
+        <img src="{{ user.image.url }}" />
+      </div>
+      <div class="profile-info">
+        <h3>Personal Information</h3>
+        <p>
+          <strong>Name:</strong> {{ user.name }}
+        </p>
+        <p>
+          <strong>Date of Birth:</strong> {{ user.dob }}
+        </p>
+        <p>
+          <strong>Gender:</strong> {{ user.gneder }}
+        </p>
+        <p>
+          <strong>Email:</strong> {{ user.email }}
+        </p>
+        <p>
+          <strong>Mobile No.:</strong> {{ user.no }}
+        </p>
+        <p>
+          <strong>Address:</strong> {{ user.address }}
+        </p>
+        <p>
+          <strong>State:</strong> {{ user.state }}
+        </p>
+      </div>
+      <div class="profile-info">
+        <h3>Education</h3>
+        <p>
+          <strong>Education Level:</strong> {{ user.education }}
+        </p>
+      </div>
+      <div class="profile-info">
+        {% comment %} <p>
+          <a href="#">Download Resume</a>
+        </p> {% endcomment %}
+        {% if request.user == user %}
+          {% if not request.user.resume %}
+            <h3>Uploade Resume</h3>
+            <form action="" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              <input type="file" name="resume" />
+              <button type="submit">Submit</button>
+            </form>
+          {% endif %}
+        {% endif %}
+        {% if user.resume %}
+          <h3>Uploaded Resume</h3>
+          <a href="{{ user.resume.url }}">Resume</a>
+        {% endif %}
+        {% comment %} {% if request.user.resume %}
+          <h3>Uploaded Resume</h3>
+          <a href="{{ user.resume.url }}">Resume</a>
+        {% endif %} {% endcomment %}
+      </div>
+      {% comment %} <div class="text-center">
+        <a href="#" class="btn btn-primary">Edit Profile</a>
+      </div> {% endcomment %}
+    </div>
+    <!-- Font Awesome Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
+  </body>
+</html>

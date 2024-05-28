@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <!-- Font Awesome CSS (for icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <!-- Custom CSS -->
+    <style>
+      .custom-navbar {
+        background-color: rgb(33, 33, 198); /* Blue color */
+      }
+      
+      .custom-navbar .navbar-brand,
+      .custom-navbar .navbar-nav .nav-link {
+        color: #ffffff; /* White text */
+      }
+      
+      .eye-icon {
+        cursor: pointer;
+      }
+      .search{
+        margin-top: 10px;
+      }
+      .newuser{
+        margin-top: 10px;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    {% include 'navbar.html' %}
+
+    {% block start %}
+
+    {% endblock %}
+  </body>
+</html>
